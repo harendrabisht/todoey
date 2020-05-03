@@ -15,6 +15,9 @@ class TodoList extends StatelessWidget {
             handleCheckbox: (isChecked) {
               todoData.toggleTask(todoData.tasks[index]);
             },
+            removeTask: () {
+              todoData.removeTask(todoData.tasks[index]);
+            },
           ),
           itemCount: todoData.taskCount,
         );

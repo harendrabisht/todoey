@@ -28,4 +28,9 @@ class TodoData extends ChangeNotifier {
     task.toggleTask();
     notifyListeners();
   }
+
+  void removeTask(Task task) {
+    _tasks.remove(task);
+    notifyListeners();
+  }
 }
