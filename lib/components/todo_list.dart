@@ -6,17 +6,21 @@ import 'package:todoapp/models/todo_data.dart';
 class TodoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (context, index) => Todo(
-        title: Provider.of<TodoData>(context).tasks[index].title,
-        isChecked: Provider.of<TodoData>(context).tasks[index].isChecked,
-        handleCheckbox: (isChecked) {
+    return Consumer<TodoData>(
+      builder: (context, todoData, _) {
+        return ListView.builder(
+          itemBuilder: (context, index) => Todo(
+            title: todoData.tasks[index].title,
+            isChecked: todoData.tasks[index].isChecked,
+            handleCheckbox: (isChecked) {
 //          setState(() {
 //            widget.tasks[index].toggleTask();
 //          });
-        },
-      ),
-      itemCount: Provider.of<TodoData>(context).tasks.length,
+            },
+          ),
+          itemCount: todoData.tasks.length,
+        );
+      },
     );
   }
 }
