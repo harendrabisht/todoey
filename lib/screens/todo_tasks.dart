@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todoapp/components/todo_list.dart';
-import 'package:todoapp/models/task.dart';
+import 'package:todoapp/models/todo_data.dart';
 import 'package:todoapp/screens/add_task.dart';
 
 class TodoTasks extends StatefulWidget {
@@ -9,12 +10,6 @@ class TodoTasks extends StatefulWidget {
 }
 
 class _TodoTasksState extends State<TodoTasks> {
-  List<Task> tasks = [
-    Task(title: 'Todo item 1'),
-    Task(title: 'Todo item 2'),
-    Task(title: 'Todo item 3'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +24,10 @@ class _TodoTasksState extends State<TodoTasks> {
           showModalBottomSheet(
             context: context,
             builder: (BuildContext context) => AddTodo((newTask) {
-              setState(() {
-                tasks.add(Task(title: newTask));
-              });
-              Navigator.pop(context);
+//              setState(() {
+//                tasks.add(Task(title: newTask));
+//              });
+//              Navigator.pop(context);
             }),
           );
         },
@@ -69,6 +64,9 @@ class _TodoTasksState extends State<TodoTasks> {
                         color: Colors.white,
                       ),
                     ),
+                    Text(
+                      '${Provider.of<TodoData>(context).tasks.length} Task',
+                    )
                   ],
                 ),
               ),
@@ -82,7 +80,7 @@ class _TodoTasksState extends State<TodoTasks> {
                       topLeft: Radius.circular(30),
                     ),
                   ),
-                  child: TodoList(tasks),
+                  child: TodoList(),
                 ),
               ),
             ],

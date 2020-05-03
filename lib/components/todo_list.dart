@@ -1,29 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todoapp/components/todo.dart';
-import 'package:todoapp/models/task.dart';
+import 'package:todoapp/models/todo_data.dart';
 
-class TodoList extends StatefulWidget {
-  final List<Task> tasks;
-  TodoList(this.tasks);
-
-  @override
-  _TodoListState createState() => _TodoListState();
-}
-
-class _TodoListState extends State<TodoList> {
+class TodoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) => Todo(
-        title: widget.tasks[index].title,
-        isChecked: widget.tasks[index].isChecked,
+        title: Provider.of<TodoData>(context).tasks[index].title,
+        isChecked: Provider.of<TodoData>(context).tasks[index].isChecked,
         handleCheckbox: (isChecked) {
-          setState(() {
-            widget.tasks[index].toggleTask();
-          });
+//          setState(() {
+//            widget.tasks[index].toggleTask();
+//          });
         },
       ),
-      itemCount: widget.tasks.length,
+      itemCount: Provider.of<TodoData>(context).tasks.length,
     );
   }
 }
