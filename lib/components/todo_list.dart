@@ -7,7 +7,7 @@ class TodoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<TodoData>(
-      builder: (context, todoData, _) {
+      builder: (context, todoData, child) {
         return ListView.builder(
           itemBuilder: (context, index) => Todo(
             title: todoData.tasks[index].title,

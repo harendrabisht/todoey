@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoapp/models/todo_data.dart';
 
 class AddTodo extends StatelessWidget {
-  final Function handleAddTask;
-  AddTodo(this.handleAddTask);
   @override
   Widget build(BuildContext context) {
     String newTask;
@@ -38,7 +38,8 @@ class AddTodo extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              handleAddTask(newTask);
+              Provider.of<TodoData>(context, listen: false).addNewTask(newTask);
+              Navigator.pop(context);
             },
           )
         ],

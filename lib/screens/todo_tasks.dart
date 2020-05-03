@@ -23,12 +23,7 @@ class _TodoTasksState extends State<TodoTasks> {
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            builder: (BuildContext context) => AddTodo((newTask) {
-//              setState(() {
-//                tasks.add(Task(title: newTask));
-//              });
-//              Navigator.pop(context);
-            }),
+            builder: (BuildContext context) => AddTodo(),
           );
         },
       ),
