@@ -60,7 +60,7 @@ class _TodoTasksState extends State<TodoTasks> {
                       ),
                     ),
                     Text(
-                      '${Provider.of<TodoData>(context).tasks.length} Task',
+                      '${Provider.of<TodoData>(context).taskCount} Task',
                     )
                   ],
                 ),

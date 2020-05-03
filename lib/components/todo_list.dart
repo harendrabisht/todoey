@@ -13,12 +13,10 @@ class TodoList extends StatelessWidget {
             title: todoData.tasks[index].title,
             isChecked: todoData.tasks[index].isChecked,
             handleCheckbox: (isChecked) {
-//          setState(() {
-//            widget.tasks[index].toggleTask();
-//          });
+              todoData.toggleTask(todoData.tasks[index]);
             },
           ),
-          itemCount: todoData.tasks.length,
+          itemCount: todoData.taskCount,
         );
       },
     );
